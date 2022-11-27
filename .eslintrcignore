@@ -1,0 +1,12 @@
+**/node_modules/**
+/.history
+/dist/
+plugins
+/.eslintrc.js
+/.eslintrc.cjs
+/stylelint.config.js
+/stylelint.config.cjs
+/postcss.config.js
+/postcss.config.cjs
+/vite.config.ts
+/vue-shim.d.ts

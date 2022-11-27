@@ -1,0 +1,135 @@
+@use '../global/index' as g;
+
+html {
+    font-size: 62.5%;
+    height: 100%;
+    scroll-behavior: smooth;
+    @include g.media('>tablet') {
+        font-size: 62.5%;
+    }
+    @include g.media('<=tablet', '>phone') {
+        font-size: 62.5%;
+    }
+    @include g.media('<=phone') {
+        font-size: calc(100vw / var(--base-size) * 10);
+    }
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+body {
+    font-family: g.$font-family-default;
+    color: g.$color-black;
+    font-size: 1.6rem;
+    font-weight: 400;
+    letter-spacing: normal;
+    background-repeat: no-repeat; // ブラウザーは速さや位置の正確さよりも、読みやすさを強調
+    text-rendering: optimizeLegibility; // サブピクセルではなく、ピクセルレベルでフォントを滑らかにする
+    -webkit-font-smoothing: antialiased; // サブピクセルではなくグレースケールのアンチエイリアスで、テキストを描画
+    -moz-osx-font-smoothing: grayscale;
+    word-break: break-all;
+    word-spacing: 1px;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    width: 100%;
+    margin: 0;
+    overflow-x: hidden;
+    &.is-hidden {
+        overflow: hidden;
+    }
+
+    section {
+        position: relative;
+        width: 100%;
+        z-index: 1;
+    }
+
+    img {
+        display: block;
+        width: 100%;
+        height: auto;
+        image-rendering: auto;
+    }
+
+    ul {
+        list-style: none;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    &::-webkit-scrollbar {
+        width: 1rem;
+        -webkit-appearance: none;
+    }
+    &::-webkit-scrollbar-thumb {
+        border-radius: 1rem;
+        background: g.$color-twilight-blue;
+        box-shadow: none;
+    }
+    &::-webkit-scrollbar-track {
+        background: g.$color-concrete;
+        border: none;
+        border-radius: 1rem;
+    }
+}
+
+#app {
+    position: relative;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+
+.wrapper {
+    position: relative;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    opacity: 0;
+}
+
+.content {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    position: relative;
+    margin: 0 auto;
+    width: 100%;
+    &--content01 {
+        background: linear-gradient(90deg, g.$color-marine 50%, g.$color-red 50%);
+    }
+    &--content02 {
+        background-color: g.$color-navy-blue;
+    }
+}
+
+.pc-class {
+    display: block;
+    @include g.mq(mobile) {
+        display: none;
+    }
+}
+
+.pc-flex-class {
+    display: flex;
+    @include g.mq(mobile) {
+        display: none;
+    }
+}
+
+.sp-class {
+    display: none;
+    @include g.mq(mobile) {
+        display: block;
+    }
+}
+
+* {
+    box-sizing: border-box;
+}

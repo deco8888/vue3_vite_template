@@ -1,0 +1,20 @@
+@use '../../global/index' as g;
+
+.p-mv {
+    $mv: &;
+    &__image {
+        position: relative;
+        width: 100%;
+        margin: 0;
+        @include g.scroll-scale-down-before;
+        #{$mv}.is-active & {
+            @include g.scroll-scale-down-after;
+        }
+        &-wrap {
+            position: relative;
+            width: 100%;
+            margin: 0;
+            overflow: hidden;
+        }
+    }
+}

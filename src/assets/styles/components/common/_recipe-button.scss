@@ -1,0 +1,102 @@
+@use '../../global/index' as g;
+
+.c-recipe-button {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    $pc-content-width: 700;
+    $sp-content-width: 670;
+    $pc-button-width: 331;
+    $sp-button-width: 331;
+    &--main {
+        $pc-content-width: 520;
+        $sp-content-width: 520;
+        $pc-button-width: 551;
+        $sp-button-width: 551;
+    }
+    @include g.media('>phone') {
+        margin: g.get-per(82, $pc-content-width) 0 0;
+        width: g.get-per($pc-button-width, $pc-content-width);
+        $border-radius: g.get-size-pc-default(126px);
+        border-radius: $border-radius;
+        @include g.before-scale-change;
+        @include g.hover-only {
+            @include g.after-scale-change(0.9, 0);
+        }
+    }
+    @include g.media('<=phone') {
+        margin: g.get-per(30, $sp-content-width) 0 0;
+        width: g.get-per($sp-button-width, $sp-content-width);
+        border-radius: 11rem;
+    }
+    &--saba {
+        background-color: g.$color-navy-blue;
+    }
+    &--salmon {
+        background-color: g.$color-red;
+    }
+    &__text {
+        color: g.$color-white;
+        line-height: 1.33;
+        font-weight: bold;
+        text-align: center;
+        @include g.media('>phone') {
+            padding: g.get-per(10, $pc-button-width) 0 g.get-per(11, $pc-button-width);
+            font-size: g.get-size-pc-default(20px);
+        }
+        @include g.media('<=phone') {
+            padding: g.strip-lh(15, 2.4rem, 1.33, $sp-button-width) 0 g.strip-lh(16, 2.4rem, 1.33, $sp-button-width);
+            font-size: 2.4rem;
+        }
+    }
+    &__icon {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        @include g.media('>phone') {
+            left: g.get-size-pc-default(61px);
+            width: g.get-size-pc-default(71px);
+            height: g.get-size-pc-default(71px);
+        }
+        @include g.media('<=phone') {
+            left: 7rem;
+            width: 7rem;
+            height: 7rem;
+        }
+    }
+    &__svg {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        @include g.media('>phone') {
+            right: g.get-size-pc-default(40px);
+            width: g.get-size-pc-default(71px);
+            height: g.get-size-pc-default(71px);
+        }
+        @include g.media('<=phone') {
+            right: 4rem;
+            width: 7rem;
+            height: 7rem;
+        }
+        & svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        &-circle {
+            fill: none;
+            stroke: g.$color-white;
+            stroke-miterlimit: 10;
+            stroke-width: 20px;
+        }
+        &-arrow {
+            fill: g.$color-white;
+        }
+    }
+}
